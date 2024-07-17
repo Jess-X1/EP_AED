@@ -43,7 +43,6 @@ BTreeNode* search(int k)
 // The main function that inserts a new key in this B-Tree
 void insert(int k);
 };
-// Constructor for BTreeNode class
 BTreeNode::BTreeNode(int t1, bool leaf1)
 {
 // Copy the given minimum degree and leaf property
@@ -226,3 +225,5 @@ EXPECTED OUTPUT:
 Traversal of the constructed tree is 10 20 30 40 50 60 70 80
 Present
 Not Present
+*/
+
