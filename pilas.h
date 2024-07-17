@@ -1,54 +1,31 @@
-#include <iostream>
+#include <vector>
 using namespace std;
-int const maxi=100;
 
-//clase del tipo elemento:
-typedef class element{
+const int cap=1e5;
+template <class type>
+class stack{
+    vector<type> list;
+
 public:
-    int key; // TIPO DE VALOR
-} element;
-
-//clase del tipo pila
-typedef class stack{
-public:
-    element list[maxi];
-    int top; //index of the top element
-
-    //FUNCIONES ---------------------------------------
-    //me dice si esta lleno
-    int isfull (){
-        if (top>=maxi-1) return 1;
-        else return 0;
+    bool empty(){
+        return list.empty();
     }
-    //eleimina" el valor en posicion top
-    void pop(){(top)--;}
-
-    //agrega el valor e en posición top
-    void push(int x){
-        element e;
-        e.key=x;
-        (top)++;
-        list[top]=e;
+    bool full(){
+        return list.size()==cap;
     }
-} stack;
-
-//me brinda el elemento TOP del stack
-element top(stack *s){ return s->list[s->top]; };
-
-void print(stack pila){
-    auto arr=pila.list;
-    for(int i=0; i<pila.top+1; i++){
-        cout<<arr[i].key;
-    }
-}
-
-int main(){
-    stack pila;
-    pila.top=-1;
-    top(&pila);
-    pila.push(2);
-    pila.push(3);
-    print(pila);
-    element a;
-    a.key=2;
-}
+    bool push(type k){
+        if(full()) return false;
+        list.push_back(k);
+        return true;
+    };
+    type pop(){
+        if(empty()) return {};
+        type k=list.back();
+        list.pop_back();
+        return k;
+    };
+    type top(){
+        if(empty()) return {};
+        return list.back();
+    };
+};
